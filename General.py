@@ -12,13 +12,14 @@ matplotlib.style.use('ggplot')
 # DataSet : ARAS
 # Day 1 - Day 30
 
+#General Questions
 # 1.Can the data show the gender of the subject/resident?
 
-columesName = ['Ph1','Ph2','Ir1','Fo1','Fo2','Di3','Di4','Ph3','Ph4','Ph5','Ph6','Co1','Co2','Co3','So1','So2','Di1','Di2','Te1','Fo3','R1','R2']
+columnsName = ['Ph1','Ph2','Ir1','Fo1','Fo2','Di3','Di4','Ph3','Ph4','Ph5','Ph6','Co1','Co2','Co3','So1','So2','Di1','Di2','Te1','Fo3','R1','R2']
 
 for x in range(1, 1):
     df = pd.read_csv('House A/DAY_'+ str(x) +'.txt', sep=" ", header=None)
-    df.columns = columesName
+    df.columns = columnsName
         
 #   Histogram 
     mdf = df[['R1','R2']]
@@ -31,17 +32,16 @@ for x in range(1, 1):
     plt.legend(loc='upper right')
     plt.show()
     
-# Result for checking gender
+# Result
 # activity 20 indicates shaving 
 # Resident 1 never shaves (Likely to be a Woman)
 # Resident 2 shaves everyday (Likely to be a Man)
 
-#General Questions
 # 2. Can a living style tell the personality of the person?
 
 for x in range(1,1):
     df = pd.read_csv('House A/DAY_'+ str(x) +'.txt', sep=" ", header=None) 
-    df.columns = columesName
+    df.columns = columnsName
         
 #   2D Scatter plot  
 #   X-axis : activity of resident R1 or R2
@@ -57,7 +57,7 @@ for x in range(1,1):
     plt.xlabel('R2 - Day ' + str(x))
     plt.show()  
     
-# Result for finding the personality of the person
+# Result
 #  Resident 1 sleep time is very consistent
 #  Resident 1 goes out less and uses internet a lot 
 #  Resident 1 could be not a outgoing person and have a good life balance at home
@@ -69,39 +69,49 @@ for x in range(1,1):
 # This can be answered by looking at column 20 and columne 21
 
 # 4. How do we know if the subjects are sleeping or they are just lying on the bed? (Assume all smart home should have beds)
-mean =0
-for x in range(1,30):
+for x in range(1,1):
     df = pd.read_csv('House A/DAY_'+ str(x) +'.txt', sep=" ", header=None) 
-    df.columns = columesName
-    
-    mdf = df.loc[df["R2"]==11]
-    mdf = mdf[["R2"]]
-    #Begin Time
-    if mdf.index.size > 1:
-        begin = mdf.index[0]
-        #End Time    
-        end = mdf.index[mdf.index.size-1]
-        #Difference
-        diff = end - begin
-        #Average
-        mean += diff
-        #Convert to hours
-        if diff > 3600:
-            hours = diff / 3600
-            temp = diff / 3600.0
-            minutes = round(temp % int(temp), 2) * 60
-            print 'Day ' + str(x) + ' : ' + str(hours) + 'hrs : ' + str(minutes) + 'mins'
-    
-
-# Result for subjects ar sleeping or doing something else
+    df.columns = columnsName
+    resident = "R1"        
+    mdf = df.loc[df[resident]==11]
+    mdf = mdf[[resident]]
+    plt.scatter(mdf[resident], mdf.index)
+    plt.xlabel(resident+ ' - Day ' + str(x))
+    plt.xlim(10,12)
+    plt.show()  
+# Result
 # Without a light switch sensor, time is the only thing to look at.
 # Resident 1
-# Day 5 
+# Sleeping schedule is pretty normal.
 # Resident 2
-# Day 2, Day 29, Day 30 are not home.   
+# Day 2 and Day 29 are not home.   
+# Day 5 is a mistake definitely to say that person is sleeping for about 2 minutes
 
-
- 
-
+# 5. What are the patterns that can be studied to predict what the subject is going to do next?
+for x in range(1,10):
+    df = pd.read_csv('House A/DAY_'+ str(x) +'.txt', sep=" ", header=None)
+    df.columns = columnsName
+        
     
+# 6. In terms of security of the house, what are the time that subjects not at home?
+
+for x in range(1,1):
+    df = pd.read_csv('House A/DAY_'+ str(x) +'.txt', sep=" ", header=None) 
+    df.columns = columnsName
+    resident = "R1"        
+    mdf = df.loc[df[resident]==2]
+    mdf = mdf[[resident]]
+    plt.scatter(mdf[resident], mdf.index)
+    plt.xlabel(resident+ ' - Day ' + str(x))
+    plt.xlim(1,3)
+    plt.show() 
+    
+# Result
+# Resident 1  
+# did not go out on Day 4, Day 6, Day 9
+# Resident 2
+# go out everday
+
+
+# 7. How can anomaly activities be recognized in this dataset? (eg. outlier on a 2D/3D graph?)
 
