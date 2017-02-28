@@ -1,7 +1,3 @@
- Purpose : Apply data analytics skills to answer questions
- DataSet : Kasteren Activity 
- Feb 25 2008 - March 21 2008
-
  General Questions
  1. Can the data show the gender of the subject/resident?
  2. Can a living style tell the personality of the person?
@@ -11,9 +7,13 @@
  6. In terms of security of the house, what are the time that subjects not at home?
  7. How can anomaly activities be recognized in this dataset? (eg. outlier)
 
- Questions to this dataset
+ Questions to this dataset (MIT Activity)
+ 8. What are some time which may indicate sleeping for this dataset?
+
+ Questions to this dataset (ARAS)
+ 8. How can we tell the activities are performed by resident 1 or resident 2?
+
+ Questions to this dataset (Kasteren Activity)
  8. How to differentiate preparing breakfast or lunch when kitchen is used?
- 9. Can activities be recognized more specifically?  
- eg. get drink vs get a specific drink, leave house vs someone visits the house
 
  Questions are answered in different python scripts.
