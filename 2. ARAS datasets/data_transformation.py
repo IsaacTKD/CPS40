@@ -21,9 +21,9 @@ sensorsName = ['Ph1','Ph2','Ir1','Fo1','Fo2','Di3','Di4','Ph3','Ph4','Ph5','Ph6'
 
 # read input file and clean up the data
 df = pd.read_csv('House B/ARAS_Dataset.txt', sep=" ", header=None)
+
 df.columns = columnsName
 # select only 10 days because it takes too long to load 30 days of data
-#df = df.loc[df.index < 86401]
 
 # declare variables 
 activitiesPerDay = []
@@ -33,13 +33,14 @@ numOccurrences = []
 avgDuration = []
 numSensors = []
 
+resident = "R2"
 # assign value to lists
-activitiesPerDay.append(df.R1[0])
-uniqueActivities = df.R1.unique()
+activitiesPerDay.append(df[resident][0])
+uniqueActivities = df[resident].unique()
 
 for i in range (0, len(df)-1):       
-    if(df.R1[i] != df.R1[i+1]) :
-        activitiesPerDay.append(df.R1[i+1])
+    if(df[resident][i] != df[resident][i+1]) :
+        activitiesPerDay.append(df[resident][i+1])
         
 
 for activity in uniqueActivities:
@@ -51,12 +52,12 @@ for activity in uniqueActivities:
 
     
 for activity in uniqueActivities:
-    ndf = df.loc[df.R1==activity]
+    ndf = df.loc[df[resident]==activity]
     ndf = ndf.reset_index(drop=True)
     Duration.append(round(((len(ndf)-1) /3600.0),2))
-    
+
 for activity in uniqueActivities:
-    ndf = df.loc[df.R1==activity]
+    ndf = df.loc[df[resident]==activity]
     ndf = ndf.reset_index(drop=True)
     ndf = ndf.loc[(ndf['Ph1'] == 1)| (ndf['Ph2'] == 1) | (ndf['Ir1'] == 1) |
                  (ndf['Fo1'] == 1) | (ndf['Fo2'] == 1) | (ndf['Di3'] == 1) |
@@ -69,8 +70,7 @@ for activity in uniqueActivities:
     temp=[]
     for x in sensorsName :
         if(1 in list(ndf[x])):
-            temp.append(x)
-            
+            temp.append(x)            
     numSensors.append(len(temp))
 
 for index in range (0, len(uniqueActivities)):
