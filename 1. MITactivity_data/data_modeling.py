@@ -26,7 +26,7 @@ for i in range(len(X)):
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)
 
 patch = mpatches.Patch(color='green', label='Activities')
-patch1 = mpatches.Patch(color='red', label='Anomaly Activities')
+patch1 = mpatches.Patch(color='red', label='Activities')
 patch2 = mpatches.Patch(color='blue', label='Activities')
 plt.legend(handles=[patch,patch1,patch2]) 
 plt.title('Mar-Apr Subject 1 Activities')
@@ -35,9 +35,6 @@ plt.ylabel('numOfoccurrences')
 plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='red', alpha=0.5, linewidths=3, s=150, zorder=10)
 plt.show()
 df = []
-
-
-
 
 
 df = pd.read_csv('subject2/processed_MITActivity.txt', header= None, sep="\s+", names=['ActivityID','avgDuration','numOfoccurrences'])
@@ -60,7 +57,7 @@ for i in range(len(X)):
 
 patch = mpatches.Patch(color='green', label='Activities')
 patch1 = mpatches.Patch(color='red', label='Activities')
-patch2 = mpatches.Patch(color='blue', label='Anomaly Activities')
+patch2 = mpatches.Patch(color='blue', label='Activities')
 plt.legend(handles=[patch,patch1,patch2]) 
 plt.title('Mar-Apr Subject 2 Activities')
 plt.xlabel('avgDuration')

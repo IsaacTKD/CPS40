@@ -56,7 +56,7 @@ colors = ["g.","r.","b.","y","p"]
 for i in range(len(X)):
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)
 
-patch = mpatches.Patch(color='green', label='Anomaly Activities')
+patch = mpatches.Patch(color='green', label='Activities')
 patch1 = mpatches.Patch(color='red', label='Activities')
 patch2 = mpatches.Patch(color='blue', label='Activities')
 plt.legend(handles=[patch,patch1,patch2]) 
@@ -81,7 +81,7 @@ kmeans.fit(X)
 centroids = kmeans.cluster_centers_
 labels = kmeans.labels_
 
-colors = ["g.","r.","b.","y","p"]
+colors = ["g.","r.","b."]
 
 for i in range(len(X)):
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)
@@ -111,7 +111,7 @@ kmeans.fit(X)
 centroids = kmeans.cluster_centers_
 labels = kmeans.labels_
 
-colors = ["g.","r.","b.","y","p"]
+colors = ["g.","r.","b."]
 
 for i in range(len(X)):
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)

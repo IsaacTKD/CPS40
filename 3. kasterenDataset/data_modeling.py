@@ -27,9 +27,9 @@ colors = ["g.","r.","b."]
 for i in range(len(X)):
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)
 
-patch = mpatches.Patch(color='green', label='Anomaly Activities')
+patch = mpatches.Patch(color='green', label='Activities')
 patch1 = mpatches.Patch(color='red', label='Activities')
-patch2 = mpatches.Patch(color='blue', label='Anomaly Activities')
+patch2 = mpatches.Patch(color='blue', label='Activities')
 plt.legend(handles=[patch,patch1,patch2]) 
 plt.title('28 Days of Activities')
 plt.xlabel('avgDuration')

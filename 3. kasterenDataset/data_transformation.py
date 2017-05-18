@@ -50,6 +50,11 @@ df_processedActData['numOfOccurrences'] = numOccurrences
 
 df_processedActData[['ActivityID','avgDuration','numOfOccurrences']] =  df_processedActData[['ActivityID','avgDuration','numOfOccurrences']].apply(pd.to_numeric)
 
-print df_processedActData
 np.savetxt('processed_kasteren.txt', df_processedActData.values,fmt= '%d %.2f %d')  
+
+        
+        
+
+        
+
 
